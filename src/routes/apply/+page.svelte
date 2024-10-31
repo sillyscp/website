@@ -7,8 +7,8 @@
     export let data: PageData;
 </script>
 
-<div class="sm:flex sm:items-center sm:justify-center m-10">
-    <div class="space-y-4 xl:w-[44rem] lg:w-[34rem] rounded-lg border-2 border-slate-600 p-2 lg:p-10">
+<div class="flex items-center justify-center m-10">
+    <div class="space-y-4 xl:w-[44rem] lg:w-[34rem] w-full rounded-lg border-2 border-slate-600 p-2 lg:p-10">
         {#if closed}
             <p class="font-bold text-red-600">Applications are currently closed</p>
         {/if}
