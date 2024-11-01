@@ -3,7 +3,7 @@ import { superValidate } from "sveltekit-superforms";
 import { applySchema } from "./schema";
 import { zod } from "sveltekit-superforms/adapters";
 import { fail } from "@sveltejs/kit";
-import {PRIVATE_APPLICATION_WEBHOOK} from "$env/static/private";
+import {PRIVATE_APPLICATION_WEBHOOK, PRIVATE_APPLICATION_TOKEN} from "$env/static/private";
 
 export const load: PageServerLoad = async () => {
     return {
@@ -31,6 +31,17 @@ export const actions: Actions = {
         await event.fetch(PRIVATE_APPLICATION_WEBHOOK, {
             method: "POST",
             body: formData,
+        })
+
+        await event.fetch("https://central.sillyscp.gay/application", {
+            method: "POST",
+            body: JSON.stringify({
+                userId: form.data.id
+            }),
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": PRIVATE_APPLICATION_TOKEN
+            },
         })
 
         return {
