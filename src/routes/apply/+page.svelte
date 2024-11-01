@@ -12,6 +12,6 @@
         {#if closed}
             <p class="font-bold text-red-600">Applications are currently closed</p>
         {/if}
-        <Form data={data.form} {closed} />
+        <Form data={data.form} {closed} /> 
     </div>
 </div>
