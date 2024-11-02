@@ -9,6 +9,7 @@
         superForm,
     } from "sveltekit-superforms";
     import { zodClient } from "sveltekit-superforms/adapters";
+    import ModeSwitcher from "$lib/components/ModeSwitcher.svelte";
 
     export let data: SuperValidated<Infer<ApplySchema>>;
     export let closed: boolean;
@@ -20,6 +21,7 @@
     const { form: formData, enhance } = form;
 </script>
 
+<ModeSwitcher />
 
 <form method="POST" use:enhance>
     <Form.Field {form} name="tag">
