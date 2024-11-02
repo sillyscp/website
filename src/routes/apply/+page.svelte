@@ -1,11 +1,27 @@
 <script lang="ts">
     import Form from "./Form.svelte";
     import type { PageData } from "./$types";
+    import ModeSwitcher from "$lib/components/ModeSwitcher.svelte";
+    import SvelteSeo from "svelte-seo";
 
     const closed = false;
 
     export let data: PageData;
 </script>
+
+<ModeSwitcher />
+
+<SvelteSeo
+        title="Silly SCP | Apply for staff"
+        description="Apply for Discord staff on the most friendliest SCP: Secret Laboratory community to all LGBTQ+ members and allies."
+        openGraph={{
+        title: "Silly SCP | Apply for staff",
+        description: "Apply for Discord staff on the most friendliest SCP: Secret Laboratory community to all LGBTQ+ members and allies.",
+        url: "https://sillyscp.gay/apply",
+        type: "website",
+        site_name: "Silly SCP",
+    }}
+/>
 
 <div class="flex items-center justify-center m-10">
     <div class="space-y-4 xl:w-[44rem] lg:w-[34rem] w-full rounded-lg border-2 border-slate-600 p-2 sm:p-10 p-4">

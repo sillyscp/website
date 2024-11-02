@@ -1,5 +1,4 @@
 <script lang="ts">
-    import * as Form from "$lib/components/ui/form/index.js";
     import { Input } from "$lib/components/ui/input/index.js";
     import { Textarea } from "$lib/components/ui/textarea";
     import { applySchema, type ApplySchema } from "./schema";
@@ -20,8 +19,6 @@
 
     const { form: formData, enhance } = form;
 </script>
-
-<ModeSwitcher />
 
 <form method="POST" use:enhance>
     <Form.Field {form} name="tag">
