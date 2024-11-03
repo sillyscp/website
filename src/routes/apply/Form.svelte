@@ -9,7 +9,6 @@
         superForm,
     } from "sveltekit-superforms";
     import { zodClient } from "sveltekit-superforms/adapters";
-    import ModeSwitcher from "$lib/components/ModeSwitcher.svelte";
 
     export let data: SuperValidated<Infer<ApplySchema>>;
     export let closed: boolean;

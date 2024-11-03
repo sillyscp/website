@@ -6,7 +6,7 @@
 
     const closed = false;
 
-    export let data: PageData;
+    let { data }: { data: PageData } = $props();
 </script>
 
 <ModeSwitcher />
@@ -24,7 +24,7 @@
 />
 
 <div class="flex items-center justify-center m-10">
-    <div class="space-y-4 xl:w-[60rem] lg:w-[55rem] md:w-[768px] w-full rounded-lg border-2 border-slate-600 p-2 sm:p-10 p-4 mt-16 lg:mt-0">
+    <div class="space-y-4 xl:w-[60rem] lg:w-[55rem] md:w-[768px] w-full rounded-lg border-2 border-slate-600 sm:p-10 p-4 mt-16 lg:mt-0">
         {#if closed}
             <p class="font-bold text-red-600">Applications are currently closed</p>
         {/if}
