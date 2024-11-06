@@ -2,6 +2,7 @@
     import Form from "./Form.svelte";
     import type { PageData } from "./$types";
     import ModeSwitcher from "$lib/components/ModeSwitcher.svelte";
+    import * as Alert from '$lib/components/ui/alert';
     import SvelteSeo from "svelte-seo";
 
     const closed = false;
@@ -28,6 +29,10 @@
         {#if closed}
             <p class="font-bold text-red-600">Applications are currently closed</p>
         {/if}
+        <Alert.Root variant="destructive">
+            <Alert.Title>Is this the right application for you?</Alert.Title>
+            <Alert.Description>This is for <strong class="font-bold">Discord Staff</strong> only, if you want to apply for SCP:SL staff, check #applications in the Discord server</Alert.Description>
+        </Alert.Root>
         <Form data={data.form} {closed} />
     </div>
 </div>
