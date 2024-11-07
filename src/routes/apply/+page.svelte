@@ -20,7 +20,7 @@
         description="Apply for staff on the most friendliest SCP: Secret Laboratory community to all LGBTQ+ members and allies."
         openGraph={{
         title: "Silly SCP | Apply for staff",
-        description: "Apply for Discord staff on the most friendliest SCP: Secret Laboratory community to all LGBTQ+ members and allies.",
+        description: "Apply for staff on the most friendliest SCP: Secret Laboratory community to all LGBTQ+ members and allies.",
         url: "https://sillyscp.gay/apply",
         type: "website",
         site_name: "Silly SCP",
