@@ -27,7 +27,7 @@ export const actions: Actions = {
 
         const formData = new FormData();
         formData.append("file1", jsonBlob, `${form.data.tag}s-application.json`);
-        formData.append("payload_json", JSON.stringify({ content: `New application from <@${form.data.id}> ${form.data.tag} (${form.data.id})` }));
+        formData.append("payload_json", JSON.stringify({ content: `New Discord staff application from <@${form.data.id}> ${form.data.tag} (${form.data.id})` }));
 
         await event.fetch(PRIVATE_APPLICATION_WEBHOOK, {
             method: "POST",
@@ -49,4 +49,40 @@ export const actions: Actions = {
             form,
         };
     },
+    scp: async(event) => {
+        const form = await superValidate(event, zod(scpSchema));
+        if (!form.valid) {
+            return fail(400, {
+                form,
+            });
+        }
+
+        const jsonString = JSON.stringify(form.data, null, 2);
+
+        const jsonBlob = new Blob([jsonString], { type: "application/json" });
+
+        const formData = new FormData();
+        formData.append("file1", jsonBlob, `${form.data.tag}s-application.json`);
+        formData.append("payload_json", JSON.stringify({ content: `New SCP:SL Staff application from <@${form.data.id}> ${form.data.tag} (${form.data.id})` }));
+
+        await event.fetch(PRIVATE_APPLICATION_WEBHOOK, {
+            method: "POST",
+            body: formData,
+        })
+
+        await event.fetch("https://central.sillyscp.gay/application", {
+            method: "POST",
+            body: JSON.stringify({
+                userId: form.data.id
+            }),
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": PRIVATE_APPLICATION_TOKEN
+            },
+        })
+
+        return {
+            form,
+        };
+    }
 };
