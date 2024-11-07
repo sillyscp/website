@@ -5,7 +5,7 @@
     import * as Select from '$lib/components/ui/select';
     import SvelteSeo from "svelte-seo";
     import SCPForm from "./SCPForm.svelte";
-    import Label from "$lib/components/ui/label";
+    import {Label} from "$lib/components/ui/label";
 
     const closed: boolean | string = false;
 
