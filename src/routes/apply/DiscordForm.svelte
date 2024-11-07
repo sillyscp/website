@@ -11,7 +11,7 @@
     import { zodClient } from "sveltekit-superforms/adapters";
 
     export let data: SuperValidated<Infer<ApplySchema>>;
-    export let closed: boolean;
+    export let closed: boolean | '1' | '2';
 
     const form = superForm(data, {
         validators: zodClient(applySchema),
@@ -20,7 +20,7 @@
     const { form: formData, enhance } = form;
 </script>
 
-<form method="POST" use:enhance>
+<form method="POST" use:enhance  action="?/discord">
     <Form.Field {form} name="tag">
         <Form.Control>
             {#snippet children({ props })}
@@ -129,7 +129,7 @@
         </Form.Description>
         <Form.FieldErrors />
     </Form.Field>
-    {#if !closed}
+    {#if closed !== false && closed !== '1'}
         <Form.Button>Submit</Form.Button>
     {/if}
 </form>

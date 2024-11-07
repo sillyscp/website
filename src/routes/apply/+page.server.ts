@@ -1,6 +1,6 @@
 import type { PageServerLoad, Actions } from "./$types";
 import { superValidate } from "sveltekit-superforms";
-import { applySchema } from "./schema";
+import { applySchema, scpSchema } from "./schema";
 import { zod } from "sveltekit-superforms/adapters";
 import { fail } from "@sveltejs/kit";
 import {PRIVATE_APPLICATION_WEBHOOK, PRIVATE_APPLICATION_TOKEN} from "$env/static/private";
@@ -8,11 +8,12 @@ import {PRIVATE_APPLICATION_WEBHOOK, PRIVATE_APPLICATION_TOKEN} from "$env/stati
 export const load: PageServerLoad = async () => {
     return {
         form: await superValidate(zod(applySchema)),
+        scpForm: await superValidate(zod(scpSchema)),
     };
 };
 
 export const actions: Actions = {
-    default: async (event) => {
+    discord: async (event) => {
         const form = await superValidate(event, zod(applySchema));
         if (!form.valid) {
             return fail(400, {
