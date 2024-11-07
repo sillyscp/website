@@ -56,7 +56,7 @@
     <Form.Field {form} name="timezone">
         <Form.Control>
             {#snippet children({ props })}
-                <Form.Label>Why do you want to be SCP staff on Silly SCP?</Form.Label>
+                <Form.Label>What is your timezone?</Form.Label>
                 <Input {...props} bind:value={$formData.timezone} />
             {/snippet}
         </Form.Control>
