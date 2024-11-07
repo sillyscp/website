@@ -35,7 +35,7 @@
         {/if}
         <Label for="type">Type</Label>
         <Select.Root type="single" bind:value={selected} required>
-            <Select.Trigger id="type">Pick a type</Select.Trigger>
+            <Select.Trigger id="type">{selected === "1" ? "Discord Staff" : "SCP:SL Staff"}</Select.Trigger>
             <Select.Content>
                 <Select.Item value="1">Discord</Select.Item>
                 <Select.Item value="2">SCP</Select.Item>
