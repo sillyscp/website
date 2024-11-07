@@ -5,6 +5,7 @@
     import * as Select from '$lib/components/ui/select';
     import SvelteSeo from "svelte-seo";
     import SCPForm from "./SCPForm.svelte";
+    import Label from "$lib/components/ui/label";
 
     const closed: boolean | string = false;
 
@@ -32,8 +33,9 @@
         {#if (typeof closed === 'boolean' && closed) || (typeof closed === 'string' && ((selected === '1' && closed === '1') || (selected === '2' && closed === '2')))}
             <p class="font-bold text-red-600">Applications are currently closed</p>
         {/if}
-        <Select.Root type="single" bind:value={selected}>
-            <Select.Trigger />
+        <Label for="type">Type</Label>
+        <Select.Root type="single" bind:value={selected} required>
+            <Select.Trigger id="type">Pick a type</Select.Trigger>
             <Select.Content>
                 <Select.Item value="1">Discord</Select.Item>
                 <Select.Item value="2">SCP</Select.Item>
