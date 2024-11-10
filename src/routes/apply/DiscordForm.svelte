@@ -11,7 +11,7 @@
     import { zodClient } from "sveltekit-superforms/adapters";
 
     export let data: SuperValidated<Infer<ApplySchema>>;
-    export let closed: boolean | '1' | '2';
+    export let closed: boolean | string;
 
     const form = superForm(data, {
         validators: zodClient(applySchema),
@@ -129,7 +129,7 @@
         </Form.Description>
         <Form.FieldErrors />
     </Form.Field>
-    {#if closed !== false && closed !== '1'}
+    {#if closed !== true && closed !== '1'}
         <Form.Button>Submit</Form.Button>
     {/if}
 </form>
