@@ -11,7 +11,7 @@
 
     let { data }: { data: PageData } = $props();
 
-    let selected: '1' | '2' = $state("1");
+    let selected: '1' | '2' = $state("2");
 </script>
 
 <ModeSwitcher />
@@ -37,8 +37,8 @@
         <Select.Root type="single" bind:value={selected} required>
             <Select.Trigger id="type">{selected === "1" ? "Discord Staff" : "SCP:SL Staff"}</Select.Trigger>
             <Select.Content>
-                <Select.Item value="1">Discord</Select.Item>
                 <Select.Item value="2">SCP</Select.Item>
+                <Select.Item value="1">Discord</Select.Item>
             </Select.Content>
         </Select.Root>
         {#if selected === '1'}
