@@ -34,16 +34,16 @@ export const actions: Actions = {
             body: formData,
         })
 
-        await event.fetch("https://central.sillyscp.gay/application", {
-            method: "POST",
-            body: JSON.stringify({
-                userId: form.data.id
-            }),
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": PRIVATE_APPLICATION_TOKEN
-            },
-        })
+        // await event.fetch("https://central.sillyscp.gay/application", {
+        //     method: "POST",
+        //     body: JSON.stringify({
+        //         userId: form.data.id
+        //     }),
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //         "Authorization": PRIVATE_APPLICATION_TOKEN
+        //     },
+        // })
 
         return {
             form,
@@ -70,16 +70,16 @@ export const actions: Actions = {
             body: formData,
         })
 
-        await event.fetch("https://central.sillyscp.gay/application", {
-            method: "POST",
-            body: JSON.stringify({
-                userId: form.data.id
-            }),
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": PRIVATE_APPLICATION_TOKEN
-            },
-        })
+        // await event.fetch("https://central.sillyscp.gay/application", {
+        //     method: "POST",
+        //     body: JSON.stringify({
+        //         userId: form.data.id
+        //     }),
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //         "Authorization": PRIVATE_APPLICATION_TOKEN
+        //     },
+        // })
 
         return {
             form,
