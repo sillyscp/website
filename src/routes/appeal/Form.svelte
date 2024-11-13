@@ -1,7 +1,7 @@
 <script lang="ts">
     import * as Form from "$lib/components/ui/form";
     import { Input } from "$lib/components/ui/input/index.js";
-    import { scpSchema, type ScpSchema } from "./schema";
+    import { schema, type Schema } from "./schema";
     import {
         type SuperValidated,
         type Infer,
@@ -9,11 +9,10 @@
     } from "sveltekit-superforms";
     import { zodClient } from "sveltekit-superforms/adapters";
 
-    export let data: SuperValidated<Infer<ScpSchema>>;
-    export let closed: boolean | string;
+    export let data: SuperValidated<Infer<Schema>>;
 
     const form = superForm(data, {
-        validators: zodClient(scpSchema),
+        validators: zodClient(schema),
     });
 
     const { form: formData, enhance } = form;
@@ -44,25 +43,32 @@
         </Form.Description>
         <Form.FieldErrors />
     </Form.Field>
-    <Form.Field {form} name="age">
+    <Form.Field {form} name="reason">
         <Form.Control>
             {#snippet children({ props })}
-                <Form.Label>Your age</Form.Label>
-                <Input type="number" {...props} bind:value={$formData.age} required />
+                <Form.Label>Why did you get banned?</Form.Label>
+                <Input {...props} bind:value={$formData.reason} required />
             {/snippet}
         </Form.Control>
         <Form.FieldErrors />
     </Form.Field>
-    <Form.Field {form} name="timezone">
+    <Form.Field {form} name="unban_reason">
         <Form.Control>
             {#snippet children({ props })}
-                <Form.Label>What is your timezone?</Form.Label>
-                <Input {...props} bind:value={$formData.timezone} required />
+                <Form.Label>Why should we unban you?</Form.Label>
+                <Input {...props} bind:value={$formData.unban_reason} required />
             {/snippet}
         </Form.Control>
         <Form.FieldErrors />
     </Form.Field>
-    {#if closed !== true && closed !== '2'}
-        <Form.Button>Submit</Form.Button>
-    {/if}
+    <Form.Field {form} name="extra">
+        <Form.Control>
+            {#snippet children({ props })}
+                <Form.Label>Any other info we might need to know?</Form.Label>
+                <Input {...props} bind:value={$formData.extra} required />
+            {/snippet}
+        </Form.Control>
+        <Form.FieldErrors />
+    </Form.Field>
+    <Form.Button>Submit</Form.Button>
 </form>

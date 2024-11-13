@@ -25,7 +25,7 @@
         <Form.Control>
             {#snippet children({ props })}
             <Form.Label>Discord Tag</Form.Label>
-            <Input {...props} bind:value={$formData.tag} />
+            <Input {...props} bind:value={$formData.tag} required />
             {/snippet}
         </Form.Control>
         <Form.Description>
@@ -37,7 +37,7 @@
         <Form.Control>
             {#snippet children({ props })}
             <Form.Label>Discord ID</Form.Label>
-            <Input {...props} bind:value={$formData.id} />
+            <Input {...props} bind:value={$formData.id} required />
             {/snippet}
         </Form.Control>
         <Form.Description>
@@ -49,7 +49,7 @@
         <Form.Control>
             {#snippet children({ props })}
             <Form.Label>Your age</Form.Label>
-            <Input type="number" {...props} bind:value={$formData.age} />
+            <Input type="number" {...props} bind:value={$formData.age} required />
             {/snippet}
         </Form.Control>
         <Form.FieldErrors />
@@ -58,7 +58,7 @@
         <Form.Control>
             {#snippet children({ props })}
             <Form.Label>Why do you want to be Discord staff on Silly SCP?</Form.Label>
-            <Textarea {...props} bind:value={$formData.q1} />
+            <Textarea {...props} bind:value={$formData.q1} required />
             {/snippet}
         </Form.Control>
         <Form.FieldErrors />
@@ -67,7 +67,7 @@
         <Form.Control>
             {#snippet children({ props })}
             <Form.Label>What motivates you in life?</Form.Label>
-            <Textarea {...props} bind:value={$formData.q2} />
+            <Textarea {...props} bind:value={$formData.q2} required />
             {/snippet}
         </Form.Control>
         <Form.FieldErrors />
@@ -76,7 +76,7 @@
         <Form.Control>
             {#snippet children({ props })}
             <Form.Label>What keeps you moving forward and making new decisions?</Form.Label>
-            <Textarea {...props} bind:value={$formData.q3} />
+            <Textarea {...props} bind:value={$formData.q3} required />
             {/snippet}
         </Form.Control>
         <Form.FieldErrors />
@@ -85,7 +85,7 @@
         <Form.Control>
             {#snippet children({ props })}
             <Form.Label>What are your intentions as staff?</Form.Label>
-            <Textarea {...props} bind:value={$formData.q4} />
+            <Textarea {...props} bind:value={$formData.q4} required />
             {/snippet}
         </Form.Control>
         <Form.FieldErrors />
@@ -94,7 +94,7 @@
         <Form.Control>
             {#snippet children({ props })}
             <Form.Label>What should you do when someone is abusing a loop hole?</Form.Label>
-            <Textarea {...props} bind:value={$formData.q5} />
+            <Textarea {...props} bind:value={$formData.q5} required />
             {/snippet}
         </Form.Control>
         <Form.FieldErrors />
@@ -103,7 +103,7 @@
         <Form.Control>
             {#snippet children({ props })}
             <Form.Label>What should you do when someone is disrespecting other members after being told to stop?</Form.Label>
-            <Textarea {...props} bind:value={$formData.q6} />
+            <Textarea {...props} bind:value={$formData.q6} required />
             {/snippet}
         </Form.Control>
         <Form.FieldErrors />
@@ -112,7 +112,7 @@
         <Form.Control>
             {#snippet children({ props })}
             <Form.Label>What should you do if an argument between 2 members is getting heated?</Form.Label>
-            <Textarea {...props} bind:value={$formData.q7} />
+            <Textarea {...props} bind:value={$formData.q7} required />
             {/snippet}
         </Form.Control>
         <Form.FieldErrors />
@@ -121,7 +121,7 @@
         <Form.Control>
             {#snippet children({ props })}
             <Form.Label>If you had anything to say to the world, what would it be?</Form.Label>
-            <Textarea {...props} bind:value={$formData.q8} />
+            <Textarea {...props} bind:value={$formData.q8} required />
             {/snippet}
         </Form.Control>
         <Form.Description>
