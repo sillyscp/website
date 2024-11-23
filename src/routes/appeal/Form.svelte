@@ -8,6 +8,7 @@
         superForm,
     } from "sveltekit-superforms";
     import { zodClient } from "sveltekit-superforms/adapters";
+    import Turnstile from "$lib/components/Turnstile.svelte";
 
     export let data: SuperValidated<Infer<Schema>>;
 
@@ -16,6 +17,8 @@
     });
 
     const { form: formData, enhance } = form;
+
+    let pass = false;
 </script>
 
 <form method="POST" use:enhance action="?/scp">
@@ -46,7 +49,7 @@
     <Form.Field {form} name="reason">
         <Form.Control>
             {#snippet children({ props })}
-                <Form.Label>Why did you get banned?</Form.Label>
+                <Form.Label>Why did you get punished?</Form.Label>
                 <Input {...props} bind:value={$formData.reason} required />
             {/snippet}
         </Form.Control>
@@ -55,7 +58,7 @@
     <Form.Field {form} name="unban_reason">
         <Form.Control>
             {#snippet children({ props })}
-                <Form.Label>Why should we unban you?</Form.Label>
+                <Form.Label>Why should we revoke your punishment you?</Form.Label>
                 <Input {...props} bind:value={$formData.unban_reason} required />
             {/snippet}
         </Form.Control>
@@ -70,5 +73,6 @@
         </Form.Control>
         <Form.FieldErrors />
     </Form.Field>
-    <Form.Button>Submit</Form.Button>
+    <Turnstile oncallback={() => pass = true} />
+    <Form.Button disabled={!pass}>Submit</Form.Button>
 </form>

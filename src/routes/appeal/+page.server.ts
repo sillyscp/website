@@ -20,22 +20,6 @@ export const actions: Actions = {
             });
         }
 
-        const central = await event.fetch(`https://cental.sillyscp.gay/banned?userId=${form.data.id}`, {
-            headers: {
-                "Authorization": PRIVATE_APPLICATION_TOKEN
-            }
-        })
-
-        const banned = await central.json();
-
-        if(!banned.success) {
-            form.errors._errors?.push("User is not banned");
-            form.message = "User is not banned";
-            return {
-                form,
-            };
-        }
-
         const formData = new FormData();
         formData.append("payload_json", JSON.stringify(
             {
@@ -59,12 +43,12 @@ export const actions: Actions = {
                             },
                             {
                                 "id": 726796005,
-                                "name": "Why they were banned",
+                                "name": "Why they were punished",
                                 "value": form.data.reason
                             },
                             {
                                 "id": 914238494,
-                                "name": "Why they think they should be unbanned",
+                                "name": "Why they think their punishment should be revoked",
                                 "value": form.data.unban_reason
                             },
                             {
