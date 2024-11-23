@@ -4,6 +4,7 @@ import { applySchema, scpSchema } from "./schema";
 import { zod } from "sveltekit-superforms/adapters";
 import { fail } from "@sveltejs/kit";
 import {PRIVATE_APPLICATION_WEBHOOK, PRIVATE_APPLICATION_TOKEN} from "$env/static/private";
+import {validateToken} from "$lib/server/utils";
 
 export const load: PageServerLoad = async () => {
     return {
@@ -26,6 +27,22 @@ export const actions: Actions = {
         const jsonBlob = new Blob([jsonString], { type: "application/json" });
 
         const formData = new FormData();
+
+        const token = formData.get('cf-turnstile-response')!;
+
+        const { success, error } = await validateToken(token);
+
+        if (!success) {
+            return fail(400, {
+                form: {
+                    valid: false,
+                    errors: {
+                        token: error,
+                    },
+                },
+            });
+        }
+
         formData.append("file1", jsonBlob, `${form.data.tag}s-application.json`);
         formData.append("payload_json", JSON.stringify({ content: `New Discord staff application from <@${form.data.id}> ${form.data.tag} (${form.data.id})` }));
 
@@ -62,6 +79,22 @@ export const actions: Actions = {
         const jsonBlob = new Blob([jsonString], { type: "application/json" });
 
         const formData = new FormData();
+
+        const token = formData.get('cf-turnstile-response')!;
+
+        const { success, error } = await validateToken(token);
+
+        if (!success) {
+            return fail(400, {
+                form: {
+                    valid: false,
+                    errors: {
+                        token: error,
+                    },
+                },
+            });
+        }
+
         formData.append("file1", jsonBlob, `${form.data.tag}s-application.json`);
         formData.append("payload_json", JSON.stringify({ content: `New SCP:SL Staff application from <@${form.data.id}> ${form.data.tag} (${form.data.id})` }));
 

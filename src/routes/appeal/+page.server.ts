@@ -4,6 +4,7 @@ import { schema } from "./schema";
 import { zod } from "sveltekit-superforms/adapters";
 import { fail } from "@sveltejs/kit";
 import {PRIVATE_APPEAL_WEBHOOK, PRIVATE_APPLICATION_TOKEN} from "$env/static/private";
+import {validateToken} from "$lib/server/utils";
 
 export const load: PageServerLoad = async () => {
     return {
@@ -21,6 +22,22 @@ export const actions: Actions = {
         }
 
         const formData = new FormData();
+
+        const token = formData.get('cf-turnstile-response')!;
+
+        const { success, error } = await validateToken(token);
+
+        if (!success) {
+            return fail(400, {
+                form: {
+                    valid: false,
+                    errors: {
+                        token: error,
+                    },
+                },
+            });
+        }
+
         formData.append("payload_json", JSON.stringify(
             {
                 "embeds": [
