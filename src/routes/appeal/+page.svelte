@@ -14,7 +14,7 @@
         title="Silly SCP | Appeal your ban"
         description="Appeal your ban on the most friendliest SCP: Secret Laboratory community to all LGBTQ+ members and allies."
         openGraph={{
-        title: "Silly SCP | Apply for staff",
+        title: "Silly SCP | Appeal your ban",
         description: "Appeal your ban on the most friendliest SCP: Secret Laboratory community to all LGBTQ+ members and allies.",
         url: "https://sillyscp.gay/appeal",
         type: "website",
