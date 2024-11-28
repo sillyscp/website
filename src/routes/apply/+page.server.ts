@@ -15,7 +15,8 @@ export const load: PageServerLoad = async () => {
 
 export const actions: Actions = {
     discord: async (event) => {
-        const form = await superValidate(event, zod(applySchema));
+        const formD = await event.request.formData();
+        const form = await superValidate(formD, zod(applySchema));
         if (!form.valid) {
             return fail(400, {
                 form,
@@ -26,9 +27,9 @@ export const actions: Actions = {
 
         const jsonBlob = new Blob([jsonString], { type: "application/json" });
 
-        const formData = new FormData();
+        const token = formD.get('cf-turnstile-response')!;
 
-        const token = formData.get('cf-turnstile-response')!;
+        const formData = new FormData();
 
         const { success, error } = await validateToken(token);
 
@@ -51,23 +52,13 @@ export const actions: Actions = {
             body: formData,
         })
 
-        // await event.fetch("https://central.sillyscp.gay/application", {
-        //     method: "POST",
-        //     body: JSON.stringify({
-        //         userId: form.data.id
-        //     }),
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //         "Authorization": PRIVATE_APPLICATION_TOKEN
-        //     },
-        // })
-
         return {
             form,
         };
     },
     scp: async(event) => {
-        const form = await superValidate(event, zod(scpSchema));
+        const formD = await event.request.formData();
+        const form = await superValidate(formD, zod(scpSchema));
         if (!form.valid) {
             return fail(400, {
                 form,
@@ -80,7 +71,7 @@ export const actions: Actions = {
 
         const formData = new FormData();
 
-        const token = formData.get('cf-turnstile-response')!;
+        const token = formD.get('cf-turnstile-response')!;
 
         const { success, error } = await validateToken(token);
 
@@ -102,17 +93,6 @@ export const actions: Actions = {
             method: "POST",
             body: formData,
         })
-
-        // await event.fetch("https://central.sillyscp.gay/application", {
-        //     method: "POST",
-        //     body: JSON.stringify({
-        //         userId: form.data.id
-        //     }),
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //         "Authorization": PRIVATE_APPLICATION_TOKEN
-        //     },
-        // })
 
         return {
             form,
