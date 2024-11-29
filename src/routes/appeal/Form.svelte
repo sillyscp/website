@@ -9,6 +9,7 @@
     } from "sveltekit-superforms";
     import { zodClient } from "sveltekit-superforms/adapters";
     import Turnstile from "$lib/components/Turnstile.svelte";
+    import {Textarea} from "$lib/components/ui/textarea";
 
     export let data: SuperValidated<Infer<Schema>>;
 
@@ -21,7 +22,7 @@
     let pass = false;
 </script>
 
-<form method="POST" use:enhance action="?/scp">
+<form method="POST" use:enhance>
     <Form.Field {form} name="tag">
         <Form.Control>
             {#snippet children({ props })}
@@ -59,7 +60,7 @@
         <Form.Control>
             {#snippet children({ props })}
                 <Form.Label>Why should we revoke your punishment you?</Form.Label>
-                <Input {...props} bind:value={$formData.unban_reason} required />
+                <Textarea {...props} bind:value={$formData.unban_reason} required />
             {/snippet}
         </Form.Control>
         <Form.FieldErrors />
