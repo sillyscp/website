@@ -8,7 +8,7 @@
     import SCPForm from "./SCPForm.svelte";
     import {Label} from "$lib/components/ui/label";
 
-    const closed: boolean | string = false;
+    const closed: boolean | string = "2";
 
     let { data, form }: { data: PageData, form: ActionData } = $props();
 
