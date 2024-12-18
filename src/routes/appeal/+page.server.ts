@@ -14,6 +14,7 @@ export const load: PageServerLoad = async () => {
 
 export const actions: Actions = {
     default: async (event) => {
+        console.log("Submitted appeal")
         const formD = await event.request.formData();
 
         const form = await superValidate(formD, zod(schema));
@@ -38,7 +39,9 @@ export const actions: Actions = {
             });
         }
 
-        await event.fetch(PRIVATE_APPEAL_WEBHOOK, {
+        console.log("Validated token")
+
+        const res = await event.fetch(PRIVATE_APPEAL_WEBHOOK, {
             method: "POST",
             body: JSON.stringify({
                 "embeds": [
@@ -79,6 +82,8 @@ export const actions: Actions = {
                 ]
             }),
         });
+
+        console.log(res.ok)
 
         return {
             form,
