@@ -77,6 +77,8 @@ export const actions: Actions = {
             }),
         });
 
+        console.log(res.status)
+        console.log(res.statusText)
         console.log(res.ok)
 
         return {
