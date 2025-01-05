@@ -26,12 +26,12 @@
     <Form.Field {form} name="tag">
         <Form.Control>
             {#snippet children({ props })}
-                <Form.Label>Discord Tag</Form.Label>
+                <Form.Label>Discord Username</Form.Label>
                 <Input {...props} bind:value={$formData.tag} required />
             {/snippet}
         </Form.Control>
         <Form.Description>
-            Your Discord tag, not your username.
+            Your Discord username, not your display name/nickname.
         </Form.Description>
         <Form.FieldErrors />
     </Form.Field>
