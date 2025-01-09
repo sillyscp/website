@@ -8,11 +8,11 @@
     import SCPForm from "./SCPForm.svelte";
     import {Label} from "$lib/components/ui/label";
 
-    const closed: boolean | string = "2";
+    const closed: boolean | string = false;
 
     let { data, form }: { data: PageData, form: ActionData } = $props();
 
-    let selected: '1' | '2' = $state("1");
+    let selected: '1' | '2' = $state("2");
 </script>
 
 <ModeSwitcher />
