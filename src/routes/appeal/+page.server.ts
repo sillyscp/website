@@ -41,40 +41,44 @@ export const actions: Actions = {
 
         console.log("Validated token")
 
+        const body = {
+            embeds: [
+                {
+                    title: `Appeal made by <@${form.data.id}> (${form.data.id})`,
+                    color: 2326507,
+                    fields: [
+                        {
+                            name: "Tag",
+                            value: form.data.tag,
+                            inline: true
+                        },
+                        {
+                            name: "ID",
+                            value: form.data.id,
+                            inline: true
+                        },
+                        {
+                            name: "Why they were punished",
+                            value: form.data.reason
+                        },
+                        {
+                            name: "Why they think their punishment should be revoked",
+                            value: form.data.unban_reason
+                        },
+                        {
+                            name: "Do they have any extra info to tell us",
+                            value: form.data.extra ?? "No"
+                        }
+                    ]
+                }
+            ]
+        }
+
+        console.log(JSON.stringify(body, null, 4))
+
         const res = await event.fetch(PRIVATE_APPEAL_WEBHOOK, {
             method: "POST",
-            body: JSON.stringify({
-                "embeds": [
-                    {
-                        "title": `Appeal made by <@${form.data.id}> (${form.data.id})`,
-                        "color": 2326507,
-                        "fields": [
-                            {
-                                "name": "Tag",
-                                "value": form.data.tag,
-                                "inline": true
-                            },
-                            {
-                                "name": "ID",
-                                "value": form.data.id,
-                                "inline": true
-                            },
-                            {
-                                "name": "Why they were punished",
-                                "value": form.data.reason
-                            },
-                            {
-                                "name": "Why they think their punishment should be revoked",
-                                "value": form.data.unban_reason
-                            },
-                            {
-                                "name": "Do they have any extra info to tell us",
-                                "value": form.data.extra || "No"
-                            }
-                        ]
-                    }
-                ]
-            }),
+            body: JSON.stringify(body),
         });
 
         console.log(res.status)
