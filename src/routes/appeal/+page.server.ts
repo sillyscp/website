@@ -74,11 +74,12 @@ export const actions: Actions = {
             ]
         }
 
-        console.log(JSON.stringify(body, null, 4))
+        const formData = new FormData();
+        formData.append("payload_json", JSON.stringify(body));
 
         const res = await event.fetch(PRIVATE_APPEAL_WEBHOOK, {
             method: "POST",
-            body: JSON.stringify(body),
+            body: formData,
         });
 
         console.log(res.status)
