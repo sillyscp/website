@@ -44,12 +44,12 @@ export const actions: Actions = {
         const body = {
             embeds: [
                 {
-                    title: `Appeal made by <@${form.data.id}> (${form.data.id})`,
+                    title: `Appeal made by ${form.data.tag} (${form.data.id})`,
                     color: 2326507,
                     fields: [
                         {
-                            name: "Tag",
-                            value: form.data.tag,
+                            name: "User",
+                            value: `<@${form.data.id}>`,
                             inline: true
                         },
                         {
@@ -81,10 +81,6 @@ export const actions: Actions = {
             method: "POST",
             body: formData,
         });
-
-        console.log(res.status)
-        console.log(res.statusText)
-        console.log(res.ok)
 
         return {
             form,
