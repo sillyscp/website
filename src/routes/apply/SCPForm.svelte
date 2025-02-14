@@ -65,6 +65,18 @@
         </Form.Control>
         <Form.FieldErrors />
     </Form.Field>
+    <Form.Field {form} name="gameid">
+        <Form.Control>
+            {#snippet children({ props })}
+                <Form.Label>What is your ID of your account of which you play ingame?</Form.Label>
+                <Input {...props} bind:value={$formData.gameid} required />
+            {/snippet}
+        </Form.Control>
+        <Form.Description>
+            If you play the game on Steam, then it should be Steam64ID appended with @steam, if Discord, then Discord ID with @discord after, and if Northwood then add @northwood.
+        </Form.Description>
+        <Form.FieldErrors />
+    </Form.Field>
     <Turnstile oncallback={() => pass = true} />
     {#if closed !== true && closed !== '2'}
         <Form.Button disabled={!pass}>Submit</Form.Button>

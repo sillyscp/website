@@ -19,6 +19,7 @@ export const scpSchema = z.object({
     id: z.string().min(17, "Please enter a valid Discord ID").max(19, "Please enter a valid Discord ID"),
     age: z.number().int().min(16, "You must be at least 16 to apply, please do not lie just to apply").max(99, "No way you're above 100."),
     timezone: z.string().min(2, "Please enter a valid timezone"),
+    gameid: z.string().min(17, "Please enter the correct ID for the account you use to play in-game").max(30, "Please enter the correct ID for the account you use to play in-game")
 })
 
 export type ApplySchema = typeof applySchema;
