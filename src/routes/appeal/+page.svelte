@@ -24,6 +24,6 @@
 
 <div class="flex items-center justify-center m-10">
     <div class="space-y-4 xl:w-[60rem] lg:w-[55rem] md:w-[768px] w-full rounded-lg border-2 border-slate-600 sm:p-10 p-4 mt-16 lg:mt-0">
-        <h1 class="text-4xl font-bold">We have now phased out this version of appeals, please head to <a class="text-blue-500" href="https://appeals.gg/sillyscp">appeals.gg/sillyscp</a> to appeal.</h1>
+        <h1 class="text-4xl font-bold">We have now phased out this version of appeals, please head to <a class="text-blue-500" href="https://appeal.gg/sillyscp">appeals.gg/sillyscp</a> to appeal.</h1>
     </div>
 </div>
