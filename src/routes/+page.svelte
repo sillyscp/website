@@ -23,7 +23,6 @@
             <Button onclick={() => navigator.clipboard.writeText("play.sillyscp.gay:7777")} class="bg-[#5BCFFA] text-black">Copy server IP</Button>
             <Button href="/discord" class="bg-[#F5ABB9] text-black">Join our Discord</Button>
             <Button href="/apply" variant="secondary" class="text-black bg-white hover:bg-secondary/80">Apply for staff</Button>
-            <Button href="/appeal" variant="secondary" class="text-black bg-white hover:bg-secondary/80">Appeal your punishment</Button>
         </div>
     </div>
 </div>
