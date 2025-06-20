@@ -10,9 +10,9 @@
     } from "sveltekit-superforms";
     import { zodClient } from "sveltekit-superforms/adapters";
     import Turnstile from "$lib/components/Turnstile.svelte";
+    import { dev } from '$app/environment';
 
     export let data: SuperValidated<Infer<ApplySchema>>;
-    export let closed: boolean | string;
 
     const form = superForm(data, {
         validators: zodClient(applySchema),
@@ -20,7 +20,7 @@
 
     const { form: formData, enhance } = form;
 
-    let pass = false;
+    let pass = dev;
 </script>
 
 <form method="POST" use:enhance  action="?/discord">
@@ -133,7 +133,5 @@
         <Form.FieldErrors />
     </Form.Field>
     <Turnstile oncallback={() => pass = true} />
-    {#if closed !== true && closed !== '1'}
-        <Form.Button disabled={!pass}>Submit</Form.Button>
-    {/if}
+    <Form.Button disabled={!pass}>Submit</Form.Button>
 </form>

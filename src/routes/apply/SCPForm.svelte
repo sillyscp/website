@@ -9,9 +9,9 @@
     } from "sveltekit-superforms";
     import { zodClient } from "sveltekit-superforms/adapters";
     import Turnstile from "$lib/components/Turnstile.svelte";
+    import { dev } from "$app/environment";
 
     export let data: SuperValidated<Infer<ScpSchema>>;
-    export let closed: boolean | string;
 
     const form = superForm(data, {
         validators: zodClient(scpSchema),
@@ -19,7 +19,7 @@
 
     const { form: formData, enhance } = form;
 
-    let pass = false;
+    let pass = dev;
 </script>
 
 <form method="POST" use:enhance action="?/scp">
@@ -78,7 +78,5 @@
         <Form.FieldErrors />
     </Form.Field>
     <Turnstile oncallback={() => pass = true} />
-    {#if closed !== true && closed !== '2'}
-        <Form.Button disabled={!pass}>Submit</Form.Button>
-    {/if}
+    <Form.Button disabled={!pass}>Submit</Form.Button>
 </form>
