@@ -29,8 +29,8 @@
         <p class="text-lg">From the below tabs, choose your preferred role to apply for and fill in the form. Once submitted,
             we will begin to process your application. If SCP staff you will be DMed about an interview ASAP.</p>
         <Tabs.Root>
-            <Tabs.Trigger value="scp">SCP:SL</Tabs.Trigger>
-            <Tabs.Trigger value="discord" disabled>Discord</Tabs.Trigger>
+            <Tabs.Trigger value="scp" disabled>SCP:SL</Tabs.Trigger>
+            <Tabs.Trigger value="discord">Discord</Tabs.Trigger>
             <Tabs.Content value="scp">
                 <SCPForm data={data.scpForm} />
             </Tabs.Content>
