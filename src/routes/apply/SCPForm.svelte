@@ -78,5 +78,5 @@
         <Form.FieldErrors />
     </Form.Field>
 <!--    <Turnstile oncallback={() => pass = true} />-->
-    <Form.Button disabled={!pass}>Submit</Form.Button>
+    <Form.Button>Submit</Form.Button>
 </form>
