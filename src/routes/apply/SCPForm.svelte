@@ -19,7 +19,7 @@
 
     const { form: formData, enhance } = form;
 
-    let pass = dev;
+    let pass = true;
 </script>
 
 <form method="POST" use:enhance action="?/scp">
@@ -77,6 +77,6 @@
         </Form.Description>
         <Form.FieldErrors />
     </Form.Field>
-    <Turnstile oncallback={() => pass = true} />
+<!--    <Turnstile oncallback={() => pass = true} />-->
     <Form.Button disabled={!pass}>Submit</Form.Button>
 </form>

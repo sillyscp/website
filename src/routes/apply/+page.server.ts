@@ -29,22 +29,22 @@ const action = async (event: RequestEvent, schema: typeof applySchema | typeof s
 
     const formData = new FormData();
 
-    if(!dev) {
-        const token = formD.get('cf-turnstile-response')!;
-
-        const {success, error} = await validateToken(token);
-
-        if (!success) {
-            return fail(400, {
-                form: {
-                    valid: false,
-                    errors: {
-                        token: error,
-                    },
-                },
-            });
-        }
-    }
+    // if(!dev) {
+    //     const token = formD.get('cf-turnstile-response')!;
+    //
+    //     const {success, error} = await validateToken(token);
+    //
+    //     if (!success) {
+    //         return fail(400, {
+    //             form: {
+    //                 valid: false,
+    //                 errors: {
+    //                     token: error,
+    //                 },
+    //             },
+    //         });
+    //     }
+    // }
 
     formData.append("file1", jsonBlob, `${form.data.tag}s-application.json`);
     formData.append("payload_json", JSON.stringify({ content: `New ${type} Staff application from <@${form.data.id}> ${form.data.tag} (${form.data.id})` }));
