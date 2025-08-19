@@ -78,5 +78,5 @@
         <Form.FieldErrors />
     </Form.Field>
 <!--    <Turnstile oncallback={() => pass = true} />-->
-    <Form.Button>Submit</Form.Button>
+    <Form.Button onclick={() => console.log("Trying to submit...")} type="submit">Submit</Form.Button>
 </form>

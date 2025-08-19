@@ -15,6 +15,7 @@ export const load: PageServerLoad = async () => {
 };
 
 const action = async (event: RequestEvent, schema: typeof applySchema | typeof scpSchema, type: string) => {
+    console.log("action called")
     const formD = await event.request.formData();
     const form = await superValidate(formD, zod(schema));
     if (!form.valid) {
@@ -22,6 +23,8 @@ const action = async (event: RequestEvent, schema: typeof applySchema | typeof s
             form,
         });
     }
+
+    console.log("form is valid")
 
     const jsonString = JSON.stringify(form.data, null, 2);
 
@@ -52,7 +55,9 @@ const action = async (event: RequestEvent, schema: typeof applySchema | typeof s
     await event.fetch(PRIVATE_APPLICATION_WEBHOOK, {
         method: "POST",
         body: formData,
-    })
+    }).catch(console.error)
+
+    console.log("complete")
 
     return {
         form,
